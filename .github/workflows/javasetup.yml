@@ -10,7 +10,7 @@ jobs:
   runs-on: ubuntu-latest
   steps:
    - name: Chekout
-     uses: actions/chechkout@v4.2.2
+     uses: actions/Chechkout@v4.2.2
    - name: Setup Java JDK
      uses: actions/setup-java@v4.7.0
      with:
