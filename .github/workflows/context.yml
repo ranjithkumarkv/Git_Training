@@ -1,0 +1,24 @@
+name: Github Context
+
+env:
+ VAR: 'Workflow'
+on:
+ push:
+ workflow_dispatch:
+jobs:
+ echo-context:
+  runs-on: ubuntu-latest
+  env:
+   VAR: 'Job'
+  steps: 
+   - name: Display Information
+     run: |
+      echo "Event name is ${{github.event_name}}"
+      echo "Ref is ${{github.ref}}"
+      echo "SHA is ${{github.SHA}}"
+      echo "Actor is ${{github.actor}}"
+      echo "Workflow is ${{github.workflow}}"
+      echo "Run Id is ${{github.run_id}}"
+      echo "Run number is ${{github.run_number}}"
+      echo "Variable value is ${{env.VAR}}"
+      echo "Variable value of global is ${{vars.MY_VAR1}}"
