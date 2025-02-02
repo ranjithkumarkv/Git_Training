@@ -17,9 +17,11 @@ jobs:
             echo "DEPLOY_ENV=production" >> $GITHUB_ENV
           elif [[ "${{ github.ref }}" == "refs/heads/develop" ]]; then
             echo "DEPLOY_ENV=staging" >> $GITHUB_ENV
+          else
+            echo "DEPLOY_ENV=unknown" >> $GITHUB_ENV
 
       - name: Log Deployment Environment
-        run: echo "Deployment Environment:$DEPLOY_ENV"
+        run: echo "Deployment Environment:${{ env.DEPLOY_ENV }}"
 
       - name: Simulate Deployment
-        run: echo "Deploying to $env.DEPLOY_ENV environment"
+        run: echo "Deploying to ${{ env.DEPLOY_ENV }} environment"
