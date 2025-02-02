@@ -1,0 +1,41 @@
+name: GitHub Context
+
+env:
+  VAR: 'Workflow'
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  echo-context:
+    runs-on: ubuntu-latest
+    env:
+      VAR: 'Job'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+
+      - name: Log GitHub Context
+        run: |
+          echo "Event name is ${{ github.event_name }}"
+          echo "Ref is ${{ github.ref }}"
+          echo "SHA is ${{ github.sha }}"
+          echo "Actor is ${{ github.actor }}"
+          echo "Workflow is ${{ github.workflow }}"
+          echo "Run Id is ${{ github.run_id }}"
+          echo "Run number is ${{ github.run_number }}"
+          echo "Variable value is ${{ env.VAR }}"
+          echo "Variable value of global is ${{ vars.MY_VAR1 }}"
+
+      - name: Set Environment Variable
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            echo "GIT_BRANCH=main" >> $GITHUB_ENV
+          elif [[ "${{ github.ref }}" == "refs/heads/develop" ]]; then
+            echo "GIT_BRANCH=develop" >> $GITHUB_ENV
+          else
+            echo "GIT_BRANCH=${{ github.ref }}" >> $GITHUB_ENV
+          
+      - name: Print Environment Variable
+        run: echo "GIT_BRANCH:${{ env.GIT_BRANCH }}
