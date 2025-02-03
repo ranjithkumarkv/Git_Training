@@ -1,0 +1,51 @@
+name: Github Context
+
+on: [push, pull_request]
+
+jobs:
+  example_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Print GitHub context properties
+        run: |
+          echo "Action: ${{ github.action }}"
+          echo "Action Path: ${{ github.action_path }}"
+          echo "Action Ref: ${{ github.action_ref }}"
+          echo "Action Repository: ${{ github.action_repository }}"
+          echo "Action Status: ${{ github.action_status }}"
+          echo "Actor: ${{ github.actor }}"
+          echo "Actor ID: ${{ github.actor_id }}"
+          echo "API URL: ${{ github.api_url }}"
+          echo "Base Ref: ${{ github.base_ref }}"
+          echo "Event Name: ${{ github.event_name }}"
+          echo "Event Path: ${{ github.event_path }}"
+          echo "GraphQL URL: ${{ github.graphql_url }}"
+          echo "Head Ref: ${{ github.head_ref }}"
+          echo "Job: ${{ github.job }}"
+          echo "Path: ${{ github.path }}"
+          echo "Ref: ${{ github.ref }}"
+          echo "Ref Name: ${{ github.ref_name }}"
+          echo "Ref Protected: ${{ github.ref_protected }}"
+          echo "Ref Type: ${{ github.ref_type }}"
+          echo "Repository: ${{ github.repository }}"
+          echo "Repository ID: ${{ github.repository_id }}"
+          echo "Repository Owner: ${{ github.repository_owner }}"
+          echo "Repository Owner ID: ${{ github.repository_owner_id }}"
+          echo "Repository URL: ${{ github.repositoryUrl }}"
+          echo "Retention Days: ${{ github.retention_days }}"
+          echo "Run ID: ${{ github.run_id }}"
+          echo "Run Number: ${{ github.run_number }}"
+          echo "Run Attempt: ${{ github.run_attempt }}"
+          echo "Secret Source: ${{ github.secret_source }}"
+          echo "Server URL: ${{ github.server_url }}"
+          echo "SHA: ${{ github.sha }}"
+          echo "Token: ${{ github.token }}"
+          echo "Triggering Actor: ${{ github.triggering_actor }}"
+          echo "Workflow: ${{ github.workflow }}"
+          echo "Workflow Ref: ${{ github.workflow_ref }}"
+          echo "Workflow SHA: ${{ github.workflow_sha }}"
+          echo "Workspace: ${{ github.workspace }}"
