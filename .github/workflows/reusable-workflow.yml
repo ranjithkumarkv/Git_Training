@@ -1,0 +1,29 @@
+name: Reusable Workflow
+
+on:
+  workflow_call:
+    inputs:
+      name:
+        description: 'Name of the user'
+        required: true
+        type: string
+      age:
+        description: 'Age of the user'
+        required: false
+        type: number
+      is_member:
+        description: 'Is the user a member'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  example_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print inputs
+        run: |
+          echo "Name: ${{ inputs.name }}"
+          echo "Age: ${{ inputs.age }}"
+          echo "Is Member: ${{ inputs.is_member }}"
