@@ -1,0 +1,11 @@
+name: Call Reusable Workflow
+
+on: [workflow_dispatch]
+
+jobs:
+  call_reusable:
+    uses: ./.github/workflows/reusable-workflow.yml
+    with:
+      name: "John Doe"
+      age: 30
+      is_member: true
